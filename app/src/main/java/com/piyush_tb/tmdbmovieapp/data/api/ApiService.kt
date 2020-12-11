@@ -12,5 +12,5 @@ interface ApiService {
         @Query("api_key") apiKey: String,
         @Query("language") lan: String,
         @Query("page") page: Int
-    ):Call<Response>
+    ):Response
 }
