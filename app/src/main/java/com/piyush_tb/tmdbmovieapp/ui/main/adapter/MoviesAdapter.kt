@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -30,6 +31,10 @@ class MoviesAdapter () :
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         (holder as MovieViewHolder).bind(getItem(position) as Result)
+        (holder as MovieViewHolder).itemView.setOnClickListener {view : View ->
+            view.findNavController().navigate(R.id.action_movieFragment_to_movieInfoFragment2)
+
+        }
     }
     override fun submitList(list: MutableList<*>?) {
         super.submitList(list?.let { ArrayList(it) })

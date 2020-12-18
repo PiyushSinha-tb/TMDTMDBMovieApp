@@ -14,7 +14,7 @@ import com.piyush_tb.tmdbmovieapp.utils.Resource
 import kotlinx.coroutines.Dispatchers
 
 class MovieFragmentViewModel(private val mainRepository: MainRepository) : ViewModel() {
-    var movieData = MutableLiveData<List<Result >>()
+
     init {
 
         Log.i("GameViewModel", "GameViewModel created!")
