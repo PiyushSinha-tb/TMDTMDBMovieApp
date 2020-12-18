@@ -1,10 +1,7 @@
 package com.piyush_tb.tmdbmovieapp.ui.main.viewModel
 
 import android.util.Log
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProviders
-import androidx.lifecycle.liveData
+import androidx.lifecycle.*
 import com.piyush_tb.tmdbmovieapp.data.Model.Result
 import com.piyush_tb.tmdbmovieapp.data.Repository.MainRepository
 import com.piyush_tb.tmdbmovieapp.data.api.ApiHelper
@@ -14,7 +11,9 @@ import com.piyush_tb.tmdbmovieapp.utils.Resource
 import kotlinx.coroutines.Dispatchers
 
 class MovieFragmentViewModel(private val mainRepository: MainRepository) : ViewModel() {
-
+    private val _movieList = MutableLiveData<List<Result>>()
+    val movie: LiveData<List<Result>>
+        get() = _movieList
     init {
 
         Log.i("GameViewModel", "GameViewModel created!")
@@ -30,4 +29,5 @@ class MovieFragmentViewModel(private val mainRepository: MainRepository) : ViewM
             emit(Resource.error(data = null, msg = exception.message ?: "Error Occurred!"))
         }
 }
+
 }

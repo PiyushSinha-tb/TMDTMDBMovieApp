@@ -1,6 +1,8 @@
 package com.piyush_tb.tmdbmovieapp.ui.main.view
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,6 +13,7 @@ import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -31,6 +34,7 @@ class MovieFragment : Fragment() {
     private lateinit var viewModel: MovieFragmentViewModel
     private lateinit var binding: FragmentMovieBinding
     private lateinit var adapter: MoviesAdapter
+    private val movieList = MutableLiveData<List<Result>>()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -42,6 +46,8 @@ class MovieFragment : Fragment() {
             inflater,
             R.layout.fragment_movie, container, false
         )
+        binding.editText.addTextChangedListener(textWatcher)
+
         return binding.root
     }
 
@@ -62,7 +68,10 @@ class MovieFragment : Fragment() {
             it?.let { resource ->
                 when (resource.status) {
                     Status.SUCCESS -> {
-                        resource.data?.let { response -> initRv(response)}
+                        resource.data?.let { response -> {
+                            initRv(response)
+                            movieList.value=response.result
+                        }}
                     }
                     Status.ERROR -> {
                         Toast.makeText(activity, it.message, Toast.LENGTH_LONG).show()
@@ -87,5 +96,14 @@ class MovieFragment : Fragment() {
 
 
 
+    }
+    private val textWatcher = object : TextWatcher {
+        override fun afterTextChanged(s: Editable?) {
+        }
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+        }
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+        }
     }
 }
