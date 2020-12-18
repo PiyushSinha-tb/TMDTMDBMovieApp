@@ -1,5 +1,6 @@
 package com.piyush_tb.tmdbmovieapp.ui.main.adapter
 
+import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +16,7 @@ import com.piyush_tb.tmdbmovieapp.R
 import com.piyush_tb.tmdbmovieapp.data.Model.Result
 import com.piyush_tb.tmdbmovieapp.databinding.FragmentMovieBinding
 import com.piyush_tb.tmdbmovieapp.databinding.MoviecontainerBinding
+import com.piyush_tb.tmdbmovieapp.ui.main.view.MovieFragmentDirections
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.withContext
 import com.piyush_tb.tmdbmovieapp.ui.main.adapter.MoviesAdapter.MovieViewHolder as MovieViewHolder1
@@ -31,8 +33,10 @@ class MoviesAdapter () :
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         (holder as MovieViewHolder).bind(getItem(position) as Result)
+        val bundle=Bundle()
+        bundle.putInt("movie_id",(getItem(position) as Result).id)
         (holder as MovieViewHolder).itemView.setOnClickListener {view : View ->
-            view.findNavController().navigate(R.id.action_movieFragment_to_movieInfoFragment2)
+            view.findNavController().navigate(R.id.action_movieFragment_to_movieInfoFragment2,  bundle)
 
         }
     }
