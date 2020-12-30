@@ -64,16 +64,20 @@ class MovieFragment : Fragment() {
     }
 
     private fun setupObservers() {
+        Log.d("TAG", "setupObservers: f");
         viewModel.getMovieList().observe(viewLifecycleOwner, Observer {
             it?.let { resource ->
                 when (resource.status) {
                     Status.SUCCESS -> {
-                        resource.data?.let { response -> {
+
+                        resource.data?.let { response ->
+                            Log.d("TAG", "setupObservers: succes");
                             initRv(response)
-                            movieList.value=response.result
-                        }}
+
+                        }
                     }
                     Status.ERROR -> {
+                        Log.d("TAG", "setupObservers: "+it.message)
                         Toast.makeText(activity, it.message, Toast.LENGTH_LONG).show()
                     }
                     Status.LOADING -> {
@@ -85,14 +89,11 @@ class MovieFragment : Fragment() {
     }
 
     private fun initRv(response: Response) {
+
         adapter= MoviesAdapter()
         adapter.submitList(response.result as MutableList<*>)
-
-
         binding.movieslist.layoutManager=LinearLayoutManager(activity,LinearLayoutManager.VERTICAL,false)
-
         binding.movieslist.adapter=adapter
-
 
 
 

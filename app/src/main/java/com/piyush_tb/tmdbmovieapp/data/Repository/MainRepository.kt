@@ -5,4 +5,5 @@ import com.piyush_tb.tmdbmovieapp.data.api.ApiHelper
 class MainRepository(private val apiHelper: ApiHelper) {
 
    suspend fun getMovieList() = apiHelper.getMovieInfo();
+   suspend fun getMovieInfor()=apiHelper.getSingleMovieInfo()
 }

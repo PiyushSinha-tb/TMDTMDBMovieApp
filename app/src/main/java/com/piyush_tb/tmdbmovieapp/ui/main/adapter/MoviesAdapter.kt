@@ -11,6 +11,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 
 import com.piyush_tb.tmdbmovieapp.R
 import com.piyush_tb.tmdbmovieapp.data.Model.Result
@@ -58,7 +59,8 @@ class MoviesAdapter () :
                movieReleaseDate.text="Release Date "+item.release_date
                 val url="http://image.tmdb.org/t/p/w300"+item.poster_path
                 Log.d("TAG", "bind: "+url)
-                Glide.with(binding.root.context).load(url).into(moviePoster)
+                Glide.with(binding.root.context).load(url)
+                    .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC).into(moviePoster)
             }
         }
 

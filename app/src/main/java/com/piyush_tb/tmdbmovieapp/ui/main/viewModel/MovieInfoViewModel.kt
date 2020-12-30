@@ -10,7 +10,7 @@ import com.piyush_tb.tmdbmovieapp.ui.base.ViewModelFactory
 import com.piyush_tb.tmdbmovieapp.utils.Resource
 import kotlinx.coroutines.Dispatchers
 
-class MovieFragmentViewModel(private val mainRepository: MainRepository) : ViewModel() {
+class MovieInfoViewModel(private val mainRepository: MainRepository) : ViewModel() {
 
     init {
 
@@ -19,10 +19,10 @@ class MovieFragmentViewModel(private val mainRepository: MainRepository) : ViewM
     }
 
 
-    fun getMovieList() = liveData(Dispatchers.IO) {
+    fun getMovieInfo() = liveData(Dispatchers.IO) {
         emit(Resource.loading(data   = null))
         try {
-            emit(Resource.success(data = mainRepository.getMovieList()))
+            emit(Resource.success(data = mainRepository.getMovieInfor()))
         } catch (exception: Exception) {
             emit(Resource.error(data = null, msg = exception.message ?: "Error Occurred!"))
         }

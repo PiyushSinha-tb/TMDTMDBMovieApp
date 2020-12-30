@@ -12,8 +12,13 @@
         android:label="MovieFragment" >
 
         <action
-            android:id="@+id/action_movieFragment_to_movieInfoFragment2"
-            app:destination="@id/movieInfoFragment" />
+             android:id="@+id/action_movieFragment_to_movieInfoFragment2"
+            app:destination="@id/movieInfoFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:launchSingleTop="true"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left"/>
     </fragment>
     <fragment
         android:id="@+id/movieInfoFragment"
