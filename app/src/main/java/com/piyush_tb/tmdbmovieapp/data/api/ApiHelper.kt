@@ -4,4 +4,5 @@ class ApiHelper (private val apiService: ApiService,private val key: String,priv
 {
   suspend  fun getMovieInfo()=apiService.getMovieList(key,"en-US",1)
   suspend fun  getSingleMovieInfo()=apiService.getMovieInformation(movie_id,key,"en-US")
+  suspend fun  getReviewInfo()=apiService.getReview(movie_id,key,"en-US")
 }

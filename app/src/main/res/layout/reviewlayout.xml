@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+
+    android:layout_height="wrap_content">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+
+        android:id="@+id/reviewavatar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_star"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/reviewername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/regular"
+        android:text="Piyush Sinha"
+
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/reviewavatar"
+        app:layout_constraintTop_toTopOf="parent"></TextView>
+
+    <TextView
+        android:layout_marginTop="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/regular"
+        android:text="9/11/2016"
+        android:textSize="12sp"
+        android:id="@+id/reviewerDate"
+        app:layout_constraintHorizontal_bias="1"
+        android:layout_marginRight="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/reviewername"
+        app:layout_constraintTop_toTopOf="parent"></TextView>
+
+    <TextView
+
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="20dp"
+        android:id="@+id/movie_review_rating"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:fontFamily="@font/regular"
+        android:gravity="center"
+        android:text="7.5/10"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reviewavatar"></TextView>
+
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:fontFamily="@font/regular"
+        android:src="@drawable/ic_star"
+        app:layout_constraintStart_toEndOf="@+id/movie_review_rating"
+        app:layout_constraintTop_toTopOf="@+id/movie_review_rating"></ImageView>
+
+    <TextView
+
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        app:layout_constraintHorizontal_bias="0"
+        android:id="@+id/movie_review"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/regular"
+        android:maxLines="3"
+        android:text="A long time ago in a childhood not too far awayldhood not too far awayldhood not too far awayldhood not too far away..."
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/movie_review_rating"></TextView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

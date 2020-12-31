@@ -6,4 +6,7 @@ class MainRepository(private val apiHelper: ApiHelper) {
 
    suspend fun getMovieList() = apiHelper.getMovieInfo();
    suspend fun getMovieInfor()=apiHelper.getSingleMovieInfo()
+   suspend fun getReviewInfo()=apiHelper.getReviewInfo()
+
+
 }

@@ -3,12 +3,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.core.widget.NestedScrollView
+        android:fillViewport="true"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-
-        >
+        android:layout_height="match_parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+>
 
         <ImageView
             android:id="@+id/imageView2"
@@ -58,14 +60,16 @@
             android:background="@drawable/curve"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
 
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/space2"
             app:layout_constraintVertical_bias="1.0">
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
             android:layout_width="100dp"
             android:layout_height="150dp"
             android:layout_marginLeft="20dp"
@@ -80,5 +84,135 @@
                 android:scaleType="fitXY"
                 android:src="@color/black"></ImageView>
         </androidx.cardview.widget.CardView>
+
+        <TextView
+            app:layout_constraintHorizontal_bias="0"
+            android:id="@+id/movie_info_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="120dp"
+            android:fontFamily="@font/regular"
+            android:text="Wonder Woman"
+            android:textColor="@color/black"
+            android:textSize="23sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/cardView"
+            app:layout_constraintTop_toBottomOf="@+id/blurimageView"></TextView>
+
+        <TextView
+            app:layout_constraintHorizontal_bias="0"
+            android:id="@+id/movie_info_tagline"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="120dp"
+            android:fontFamily="@font/regular"
+            android:singleLine="false"
+            android:text="A new Era BeginsA Era Begins?"
+
+            android:textSize="15sp"
+            android:layout_marginRight="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/cardView"
+            app:layout_constraintTop_toBottomOf="@+id/movie_info_name"></TextView>
+
+            <TextView
+                android:id="@+id/movie_info_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="120dp"
+                android:fontFamily="@font/regular"
+                android:gravity="center"
+                android:text="7.5"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/cardView"
+                app:layout_constraintTop_toBottomOf="@+id/movie_info_tagline"></TextView>
+
+        <ImageView
+
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/regular"
+            android:src="@drawable/ic_star"
+            app:layout_constraintStart_toEndOf="@+id/movie_info_rating"
+            app:layout_constraintTop_toBottomOf="@+id/movie_info_tagline"></ImageView>
+
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:id="@+id/descriptiontitile"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/regular"
+            android:text="Description"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView"></TextView>
+
+        <TextView
+
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:id="@+id/description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/regular"
+            android:text="Description"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/descriptiontitile"></TextView>
+
+        <TextView
+            android:layout_marginTop="20dp"
+            android:id="@+id/reviewTittle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:fontFamily="@font/regular"
+            android:text="Reviews"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/description"></TextView>
+
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/noReviews"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/regular"
+            android:gravity="center"
+            android:text="No Reviews"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/constraintLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/constraintLayout"
+            app:layout_constraintTop_toBottomOf="@+id/reviewTittle"></TextView>
+        <androidx.recyclerview.widget.RecyclerView
+            android:visibility="visible"
+            android:layout_marginBottom="10dp"
+            android:id="@+id/reviewRV"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/constraintLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/reviewTittle"></androidx.recyclerview.widget.RecyclerView>
     </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
+
 </layout>

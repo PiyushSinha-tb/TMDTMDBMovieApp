@@ -28,4 +28,12 @@ class MovieInfoViewModel(private val mainRepository: MainRepository) : ViewModel
         }
 }
 
+    fun getReviewInfo() = liveData(Dispatchers.IO) {
+        emit(Resource.loading(data   = null))
+        try {
+            emit(Resource.success(data = mainRepository.getReviewInfo()))
+        } catch (exception: Exception) {
+            emit(Resource.error(data = null, msg = exception.message ?: "Error Occurred!"))
+        }
+    }
 }
