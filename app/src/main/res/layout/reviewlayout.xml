@@ -48,7 +48,7 @@
         app:layout_constraintTop_toTopOf="parent"></TextView>
 
     <TextView
-
+        android:textColor="@android:color/darker_gray"
         android:layout_marginTop="8dp"
         android:layout_marginLeft="20dp"
         android:id="@+id/movie_review_rating"
