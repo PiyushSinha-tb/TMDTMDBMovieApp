@@ -1,14 +1,13 @@
 package com.piyush_tb.tmdbmovieapp.ui.main.view
 
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Toast
 import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,18 +15,14 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.piyush_tb.tmdbmovieapp.R
 import com.piyush_tb.tmdbmovieapp.data.Model.MovieInfo
-
 import com.piyush_tb.tmdbmovieapp.data.Model.Reviews
 import com.piyush_tb.tmdbmovieapp.data.api.ApiHelper
 import com.piyush_tb.tmdbmovieapp.data.api.RetrofitBuilder
-import com.piyush_tb.tmdbmovieapp.databinding.FragmentMovieBinding
 import com.piyush_tb.tmdbmovieapp.databinding.FragmentMovieInfoBinding
 import com.piyush_tb.tmdbmovieapp.ui.base.MovieInfoViewModelFactory
-import com.piyush_tb.tmdbmovieapp.ui.main.adapter.MoviesAdapter
 import com.piyush_tb.tmdbmovieapp.ui.main.adapter.ReviewAdapter
 import com.piyush_tb.tmdbmovieapp.ui.main.viewModel.MovieInfoViewModel
 import com.piyush_tb.tmdbmovieapp.utils.Status
-import com.squareup.picasso.Downloader
 import jp.wasabeef.glide.transformations.BlurTransformation
 
 
@@ -40,6 +35,7 @@ class MovieInfoFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+
         setupViewModel()
         setupObservers()
         binding = DataBindingUtil.inflate(

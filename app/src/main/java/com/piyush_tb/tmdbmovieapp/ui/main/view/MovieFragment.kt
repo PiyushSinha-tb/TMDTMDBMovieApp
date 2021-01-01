@@ -34,7 +34,8 @@ class MovieFragment : Fragment() {
     private lateinit var viewModel: MovieFragmentViewModel
     private lateinit var binding: FragmentMovieBinding
     private lateinit var adapter: MoviesAdapter
-    private val movieList = MutableLiveData<List<Result>>()
+    lateinit var filteredList: List<Result>
+    lateinit  var movieList :List<Result>
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -72,7 +73,7 @@ class MovieFragment : Fragment() {
 
                         resource.data?.let { response ->
                             Log.d("TAG", "setupObservers: succes");
-                            initRv(response)
+                            initRv(response.result)
 
                         }
                     }
@@ -88,10 +89,10 @@ class MovieFragment : Fragment() {
         })
     }
 
-    private fun initRv(response: Response) {
-
+    private fun initRv(response: List<Result>) {
+        movieList=response
         adapter= MoviesAdapter()
-        adapter.submitList(response.result as MutableList<*>)
+        adapter.submitList(response as MutableList<*>)
         binding.movieslist.layoutManager=LinearLayoutManager(activity,LinearLayoutManager.VERTICAL,false)
         binding.movieslist.adapter=adapter
 
@@ -104,7 +105,30 @@ class MovieFragment : Fragment() {
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
         }
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            filteredList = ArrayList()
+            if (s.toString().length==0) {
 
+                adapter.submitList(movieList as MutableList<*>)
+            } else {
+                for (item in movieList) {
+                    if (searchEfficient(s.toString(),item.original_title)) {
+                        (filteredList as ArrayList<Result>).add(item)
+                    }
+                }
+                adapter.submitList(filteredList as MutableList<*>)
+            }
         }
+    }
+
+    private fun searchEfficient(filterText: String, originalTitle: String): Boolean {
+        val words=originalTitle.split(" ")
+        for(word in words)
+        {
+            if(word.startsWith(filterText))
+            {
+                return true
+            }
+        }
+        return false
     }
 }

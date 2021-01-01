@@ -16,7 +16,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class ReviewAdapter () :
-    ListAdapter<Any, RecyclerView.ViewHolder>(MovieDiffCallback())
+    ListAdapter<Any, RecyclerView.ViewHolder>(ReviewDiffCallback())
 {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)

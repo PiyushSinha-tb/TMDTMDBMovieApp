@@ -83,7 +83,7 @@
         android:maxLines="3"
         android:text="A long time ago in a childhood not too far awayldhood not too far awayldhood not too far awayldhood not too far away..."
         android:textColor="@color/black"
-        android:textSize="12sp"
+        android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
