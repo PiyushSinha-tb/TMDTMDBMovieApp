@@ -32,7 +32,7 @@ class ReviewAdapter () :
         fun bind(item : ReviewResponse) {
             with(binding)
             {
-                movieReview.text=Html.fromHtml(item.content)
+                movieReview.text=Html.fromHtml(item.content,-1)
                 val url="http://image.tmdb.org/t/p/w300"+item.author_details.avatar_path
                 val timeFormar=SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSX")
                 timeFormar.setTimeZone(TimeZone.getTimeZone("UTC"))
